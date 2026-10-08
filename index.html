@@ -6,79 +6,159 @@
 <title>Centro de Recarga (réplica de práctica)</title>
 <meta name="description" content="Réplica de práctica de diseño. No es la página oficial de Garena.">
 <style>
+:root{
+  --primary-red-hover: 205 18 20;
+  --success: 51 178 94;
+  --bonus: 255 122 0;
+  --text-title: 255 255 255;
+  --text-title-alpha: .8;
+  --text-primary: 255 255 255;
+  --text-primary-alpha: .8;
+  --text-content2: 233 66 58;
+  --text-secondary: 255 255 255;
+  --text-secondary-alpha: .6;
+  --text-hint: 255 255 255;
+  --text-hint-alpha: .30196078431372547;
+  --text-tag-new: 27 27 37;
+  --bg-base: 27 27 37;
+  --primary-red: 228 55 46;
+  --bg-tab: 46 46 57;
+  --bg-popup: 37 37 49;
+  --bg-panel: 39 39 49;
+  --bg-searchbar: 53 53 64;
+  --bg-dropdown-panel: 46 46 57;
+  --bg-inputbox: 46 46 57;
+  --bg-account: 39 39 49;
+  --bg-unselected: 53 53 66;
+  --bg-selected: 47 35 44;
+  --bg-tag-promo: 239 35 60;
+  --bg-tag-new: 255 204 24;
+  --bg-selected-panel: 33 23 30;
+  --box-border: 57 57 71;
+  --box-border-focus: 111 111 134;
+  --icon: 190 190 193;
+  --line: 255 255 255;
+  --line-alpha: .10196078431372549;
+  --divider: 17 17 28;
+  --short-line: 255 255 255;
+  --short-line-alpha: .2;
+  --hover: 60 60 71;
+}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#151515;color:#fff;line-height:1.6}
-header{background:#fff;border-bottom:1px solid #e0e0e0;padding:12px 20px;position:sticky;top:0;z-index:10}
+body{
+  font-family:Metropolis,'Noto Sans Thai','Noto Sans Arabic','Noto Sans JP','Noto Sans KR',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  background: rgb(var(--bg-base));
+  color: rgb(var(--text-primary) / var(--text-primary-alpha));
+  line-height:1.6;
+}
+header{
+  background: rgb(var(--bg-panel));
+  border-bottom:1px solid rgb(var(--line) / var(--line-alpha));
+  padding:12px 20px;position:sticky;top:0;z-index:10;
+}
 .header-content{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#333;font-weight:bold}
-.banner{background:linear-gradient(135deg,#1a1a1a,#2d2d2d);padding:40px 20px;text-align:center}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:rgb(var(--text-title));font-weight:bold}
+.banner{background:linear-gradient(135deg,rgb(var(--bg-base)),rgb(var(--bg-panel)));padding:40px 20px;text-align:center}
 .nav{background:linear-gradient(180deg,#16162B 0%,#242443 76.1%,#333356 100%);padding:30px 20px}
-.nav h3{color:#fff;margin-bottom:20px;font-size:18px}
+.nav h3{color:rgb(var(--text-title));margin-bottom:20px;font-size:18px}
 .game-selector{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:20px;max-width:1200px;margin:0 auto}
 .game-item{text-align:center;cursor:pointer;transition:transform .2s}
 .game-item:hover{transform:scale(1.05)}
-.game-icon{width:80px;height:80px;margin:0 auto 10px;border-radius:20%;border:3px solid #E41E26;overflow:hidden;background:#fff}
+.game-icon{width:80px;height:80px;margin:0 auto 10px;border-radius:20%;border:3px solid rgb(var(--primary-red));overflow:hidden;background:#fff}
 .game-icon img{width:100%;height:100%;object-fit:cover}
-.game-name{font-size:14px;color:#999}
+.game-name{font-size:14px;color:rgb(var(--text-secondary) / var(--text-secondary-alpha))}
 .main{max-width:1200px;margin:0 auto;padding:40px 20px}
 
-/* ===== Sección Free Fire / Pago 100% seguro (CORREGIDA) ===== */
+/* ===== Sección Free Fire / Pago 100% seguro ===== */
 .app-banner{
   background:
-    linear-gradient(90deg,rgba(0,0,0,.65),rgba(0,0,0,.15)),
+    linear-gradient(90deg, rgb(var(--bg-base) / .75), rgb(var(--bg-base) / .25)),
     url("https://assets.garena.com/gop/mshop/www/live/assets/FF-4470ba9b.jpg") center/cover no-repeat,
-    #2d2d2d;
-  padding:20px 24px;
-  border-radius:12px;
-  margin-bottom:40px;
-  display:flex;
-  align-items:center;
-  gap:16px;
+    rgb(var(--bg-panel));
+  padding:20px 24px;border-radius:12px;margin-bottom:40px;
+  display:flex;align-items:center;gap:16px;
 }
 .app-icon{width:72px;height:72px;flex-shrink:0;border-radius:22%;overflow:hidden;background:#fff}
 .app-icon img{width:100%;height:100%;object-fit:cover;display:block}
 .app-info{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
-.app-info h1{font-size:24px;line-height:1;margin:0;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.6)}
-.security-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.65);color:#fff;padding:5px 8px;border-radius:4px;border:1px solid rgba(255,255,255,.5);font-size:12px;font-weight:500;line-height:1}
+.app-info h1{font-size:24px;line-height:1;margin:0;color:rgb(var(--text-title));text-shadow:0 1px 4px rgb(0 0 0 / .6)}
+.security-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background: rgb(0 0 0 / .65);
+  color: rgb(var(--text-title));
+  padding:5px 8px;border-radius:4px;
+  border:1px solid rgb(var(--short-line) / var(--short-line-alpha));
+  font-size:12px;font-weight:500;line-height:1;
+}
 .security-badge svg{width:14px;height:14px;flex-shrink:0}
-/* ============================================================= */
+/* ================================================= */
 
 .section{margin-bottom:40px}
-.section-title{font-size:20px;font-weight:bold;margin-bottom:20px;display:flex;align-items:center;gap:10px}
-.section-number{background:#E41E26;color:#fff;width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:bold}
+.section-title{font-size:20px;font-weight:bold;margin-bottom:20px;display:flex;align-items:center;gap:10px;color:rgb(var(--text-title))}
+.section-number{background:rgb(var(--primary-red));color:#fff;width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:bold}
 .form-group{margin-bottom:20px}
-.form-label{display:block;margin-bottom:10px;font-weight:500;font-size:14px}
-.form-input{width:100%;padding:12px;border:1px solid #444;border-radius:6px;background:#2a2a2a;color:#fff;font-size:14px}
-.form-input:focus{outline:none;border-color:#E41E26}
-.button{background:#E41E26;color:#fff;padding:12px 24px;border:none;border-radius:6px;font-weight:600;cursor:pointer;font-size:14px;transition:background .3s}
-.button:hover{background:#c91820}
+.form-label{display:block;margin-bottom:10px;font-weight:500;font-size:14px;color:rgb(var(--text-title))}
+.form-input{
+  width:100%;padding:12px;border-radius:6px;
+  background: rgb(var(--bg-inputbox));
+  border:1px solid rgb(var(--box-border));
+  color: rgb(var(--text-primary));
+  font-size:14px;
+}
+.form-input::placeholder{color:rgb(var(--text-hint) / var(--text-hint-alpha))}
+.form-input:focus{outline:none;border-color:rgb(var(--box-border-focus))}
+.button{background:rgb(var(--primary-red));color:#fff;padding:12px 24px;border:none;border-radius:6px;font-weight:600;cursor:pointer;font-size:14px;transition:background .3s}
+.button:hover{background:rgb(var(--primary-red-hover))}
 .denomination-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:12px;margin-bottom:20px}
-.denomination-btn{padding:15px;border:2px solid #444;border-radius:8px;background:#2a2a2a;color:#fff;cursor:pointer;font-weight:600;text-align:center;transition:all .2s}
-.denomination-btn:hover{border-color:#E41E26}
-.denomination-btn.active{background:#E41E26;border-color:#E41E26}
+.denomination-btn{
+  padding:15px;border-radius:8px;cursor:pointer;font-weight:600;text-align:center;transition:all .2s;
+  background: rgb(var(--bg-unselected));
+  border:1px solid rgb(var(--box-border));
+  color: rgb(var(--text-primary));
+}
+.denomination-btn:hover{border-color:rgb(var(--primary-red))}
+.denomination-btn.active{background:rgb(var(--bg-selected));border:2px solid rgb(var(--primary-red))}
 .payment-methods{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:15px}
-.payment-method{padding:20px;border:2px solid #444;border-radius:8px;background:#2a2a2a;text-align:center;cursor:pointer;transition:all .2s}
-.payment-method:hover{border-color:#E41E26}
+.payment-method{
+  padding:20px;border-radius:8px;text-align:center;cursor:pointer;transition:all .2s;
+  background: rgb(var(--bg-unselected));
+  border:1px solid rgb(var(--box-border));
+}
+.payment-method:hover{border-color:rgb(var(--primary-red))}
 .payment-method img{width:60px;height:60px;margin:0 auto 10px;object-fit:contain;display:block}
-.payment-method-name{font-size:13px;font-weight:600}
-.promo-badge{display:inline-block;background:#E41E26;color:#fff;padding:3px 8px;border-radius:3px;font-size:11px;font-weight:bold;margin-top:8px}
+.payment-method-name{font-size:13px;font-weight:600;color:rgb(var(--text-primary))}
+.promo-badge{display:inline-block;background:rgb(var(--bg-tag-promo));color:#fff;padding:3px 8px;border-radius:3px;font-size:11px;font-weight:bold;margin-top:8px}
 .special-offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
-.offer-card{border-radius:8px;overflow:hidden;cursor:pointer;transition:all .3s;border:1px solid #444;background:#2a2a2a}
-.offer-card:hover{transform:translateY(-3px);border-color:#E41E26;box-shadow:0 4px 12px rgba(228,30,38,.2)}
-.offer-image{width:100%;padding-top:56.25%;background:linear-gradient(135deg,#444,#333);position:relative;overflow:hidden}
+.offer-card{
+  border-radius:8px;overflow:hidden;cursor:pointer;transition:all .3s;
+  border:1px solid rgb(var(--box-border));
+  background: rgb(var(--bg-unselected));
+}
+.offer-card:hover{transform:translateY(-3px);border-color:rgb(var(--primary-red));box-shadow:0 4px 12px rgb(var(--primary-red) / .2)}
+.offer-image{width:100%;padding-top:56.25%;background:rgb(var(--bg-panel));position:relative;overflow:hidden}
 .offer-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;transition:transform .3s}
 .offer-card:hover .offer-image img{transform:scale(1.05)}
-.offer-name{padding:10px 8px;background:#222;font-size:12px;font-weight:600;text-align:center;line-height:1.3}
-footer{background:#1a1a1a;border-top:1px solid #444;padding:30px 20px;text-align:center;color:#999;font-size:12px}
+.offer-name{padding:10px 8px;background:rgb(var(--bg-popup));font-size:12px;font-weight:600;text-align:center;line-height:1.3;color:rgb(var(--text-primary))}
+footer{background:rgb(var(--bg-panel));border-top:1px solid rgb(var(--divider));padding:30px 20px;text-align:center;color:rgb(var(--text-secondary) / var(--text-secondary-alpha));font-size:12px}
 .footer-links{margin-top:15px}
-.footer-links a{color:#999;text-decoration:none;margin:0 15px;transition:color .2s}
-.footer-links a:hover{color:#E41E26}
+.footer-links a{color:rgb(var(--text-secondary) / var(--text-secondary-alpha));text-decoration:none;margin:0 15px;transition:color .2s}
+.footer-links a:hover{color:rgb(var(--primary-red))}
+
+/* ===== Responsive: PC y celular ===== */
 @media (max-width:768px){
+  .header-content{flex-wrap:wrap;gap:10px}
   .app-banner{padding:16px}
   .app-icon{width:56px;height:56px}
   .app-info h1{font-size:20px}
   .denomination-grid{grid-template-columns:repeat(3,1fr)}
   .payment-methods{grid-template-columns:repeat(2,1fr)}
+  .special-offers{grid-template-columns:repeat(2,1fr)}
+  .main{padding:24px 16px}
+}
+@media (max-width:420px){
+  .denomination-grid{grid-template-columns:repeat(3,1fr);gap:8px}
+  .denomination-btn{padding:10px;font-size:13px}
+  .section-title{font-size:17px}
 }
 </style>
 </head>
@@ -87,10 +167,10 @@ footer{background:#1a1a1a;border-top:1px solid #444;padding:30px 20px;text-align
   <div class="header-content">
     <a href="#" class="logo"><span>Centro de Recargas</span></a>
     <div style="display:flex;gap:20px">
-      <select style="padding:8px 12px;border-radius:6px;border:1px solid #ddd;background:#fff">
+      <select style="padding:8px 12px;border-radius:6px;border:1px solid rgb(var(--box-border));background:rgb(var(--bg-inputbox));color:rgb(var(--text-primary))">
         <option>🇨🇴 Colombia</option><option>🇪🇨 Ecuador</option><option>🇵🇪 Perú</option><option>🇧🇷 Brasil</option>
       </select>
-      <select style="padding:8px 12px;border-radius:6px;border:1px solid #ddd;background:#fff">
+      <select style="padding:8px 12px;border-radius:6px;border:1px solid rgb(var(--box-border));background:rgb(var(--bg-inputbox));color:rgb(var(--text-primary))">
         <option>Español</option><option>Português</option><option>English</option>
       </select>
     </div>
@@ -133,8 +213,8 @@ footer{background:#1a1a1a;border-top:1px solid #444;padding:30px 20px;text-align
     <div class="section-title"><div class="section-number">1</div>Ingresar</div>
     <div class="form-group">
       <label class="form-label">ID de jugador</label>
-      <div style="display:flex;gap:10px">
-        <input type="text" class="form-input" placeholder="Introduce el ID del jugador aquí." style="flex:1">
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <input type="text" class="form-input" placeholder="Introduce el ID del jugador aquí." style="flex:1;min-width:200px">
         <button class="button">Iniciar Sesión</button>
       </div>
     </div>
@@ -149,7 +229,7 @@ footer{background:#1a1a1a;border-top:1px solid #444;padding:30px 20px;text-align
       <button class="denomination-btn">2.180 💎</button><button class="denomination-btn">5.580 💎</button>
       <button class="denomination-btn">5.600 💎</button>
     </div>
-    <h4 style="margin:30px 0 15px;color:#999">Ofertas especiales</h4>
+    <h4 style="margin:30px 0 15px;color:rgb(var(--text-secondary) / var(--text-secondary-alpha))">Ofertas especiales</h4>
     <div class="special-offers">
       <div class="offer-card"><div class="offer-image"><img src="https://cdn-gop.garenanow.com/gop/app/0000/100/067/rebate/0000/000/002/logo.png" alt="Tarjeta Semanal"></div><div class="offer-name">Tarjeta Semanal ℹ️</div></div>
       <div class="offer-card"><div class="offer-image"><img src="https://cdn-gop.garenanow.com/gop/app/0000/100/067/rebate/0000/081/041/logo.png" alt="Tarjeta Mensual"></div><div class="offer-name">Tarjeta Mensual ℹ️</div></div>
